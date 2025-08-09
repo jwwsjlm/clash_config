@@ -9,7 +9,7 @@ proxy-providers:
     interval: 86400
     health-check:
       enable: true
-      url: https://cp.cloudflare.com
+      url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连
  
@@ -133,12 +133,12 @@ dns:
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
- 
+
 # 出站策略 smart参数 （ uselightgbm: false, collectdata: false, strategy: sticky-sessions,policy-priority: "Premium:0.9;SG:1.3" ）
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
 proxy-groups:
   - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: ⚖️ 负载均衡, type: load-balance, strategy: consistent-hashing, url: "https://cp.cloudflare.com", interval: 300, tolerance: 20, filter: "(?=.*(港|HK|澳|MO|台|TW|日|JP|韩|KR|新|SG|狮城|马|MY|泰|TH|越|VN))^((?!(美|欧|澳|非|远)).)*$", include-all: true}
+  - {name: ⚖️ 负载均衡, type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 20, filter: "(?=.*(港|HK|澳|MO|台|TW|日|JP|韩|KR|新|SG|狮城|马|MY|泰|TH|越|VN))^((?!(美|欧|澳|非|远)).)*$", include-all: true}
   - {name: 📹 YouTube, type: select, proxies: [🔯 美国故转, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, ♻️ 美国智能, ♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点,⚖️ 负载均衡, 🌐 全部节点, 直连]}
   - {name: ☁️ Cloudflare, type: select, proxies: [🔯 美国故转, 🔯 香港故转, 🔯 狮城故转, 🔯 日本故转, ♻️ 美国智能, ♻️ 香港智能, ♻️ 狮城智能, ♻️ 日本智能, ♻️ 自动选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🌐 全部节点, 直连]}
   - {name: 🍀 Google, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, ♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
@@ -169,7 +169,7 @@ proxy-groups:
   - {name: ♻️ 日本智能, type: smart, uselightgbm: true, collectdata: true, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
   - {name: ♻️ 狮城智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美)).)*$" }
   - {name: ♻️ 美国智能, type: smart, uselightgbm: true, collectdata: true, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 自动选择, type: url-test, url: "https://cp.cloudflare.com", include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$" }
+  - {name: ♻️ 自动选择, type: url-test, url: "https://www.gstatic.com/generate_204", include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$" }
   
   - {name: 🌐 全部节点, type: select, include-all: true}
 
@@ -177,10 +177,10 @@ proxy-groups:
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
   - RULE-SET,private_proxy,🚀 默认代理
-  - RULE-SET,private_direct,🎯 直连
-  - RULE-SET,private_ip,🎯 直连
-  - RULE-SET,private_domain,🎯 直连
-  - RULE-SET,geolocation-cn,🎯 直连
+  - RULE-SET,private_direct,直连
+  - RULE-SET,private_ip,直连
+  - RULE-SET,private_domain,直连
+  - RULE-SET,geolocation-cn,直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,ai,🤖 ChatGPT
   - RULE-SET,OKX_domain,💸 OKX
@@ -233,7 +233,7 @@ rule-providers:
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
   gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
   geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
-  geolocation-cn: { <<: *domain, url: "  https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-cn@cn.mrs"}
+  geolocation-cn: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-cn@cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
   steam_domain: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam.mrs"}
   steamcn_domain: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam@cn.mrs"}
