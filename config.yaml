@@ -215,8 +215,8 @@ rule-anchor:
   yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
   yamlip: &yamlip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
 rule-providers: 
-  private_proxy: { <<: *class, url: "https://raw.githubusercontent.com/jwwsjlm/clash_config/proxy.list"}
-  private_direct: { <<: *class, url: "https://raw.githubusercontent.com/jwwsjlm/clash_config/direct.list"}
+  private_proxy: { <<: *class, url: "https://raw.githubusercontent.com/jwwsjlm/clash_config/main/proxy.list"}
+  private_direct: { <<: *class, url: "https://raw.githubusercontent.com/jwwsjlm/clash_config/main/direct.list"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   private_ip: {<<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs"}
   ai: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" }
