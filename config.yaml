@@ -2,16 +2,20 @@
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 跑裸核用户请自行去掉下方控制面板模块的注释。
 # 机场订阅
+# 定义完整代理提供商默认配置锚点（包含所有固定属性）
+proxy-full-default: &proxy-full-default
+  type: http
+  interval: 86400
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+  proxy: 直连
+
 proxy-providers:
   free_cloud:
-    url: "https://sub.seaya.link/share/sub/free%20cloud?token=9nABIwjltJ0l6FSja_r2y"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
+    <<: *proxy-full-default  # 继承所有默认配置
+    url: "https://sub.seaya.link/share/sub/free%20cloud?token=9nABIwjltJ0l6FSja_r2y"  # 仅需指定url
  
 # 节点信息
 proxies:
@@ -96,6 +100,7 @@ dns:
     - "*.battlenet.com"
     - "*.blzstatic.cn"
     - "*.battle.net"
+    - "+.push.apple.com"
     - "*"
     - "+.lan"
     - "connect.rom.miui.com"
