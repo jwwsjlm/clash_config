@@ -1,7 +1,7 @@
 payload:
   # Single label
   - "*"
-  #
+  
   ## LAN START ##
   - ".test"
   - ".example"
