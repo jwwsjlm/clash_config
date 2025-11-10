@@ -11,6 +11,7 @@ DOMAIN-SUFFIX,googletagmanager.com
 DOMAIN-SUFFIX,googlesyndication.com
 DOMAIN-SUFFIX,DOMAIN-SUFFIX,jads.co
 DOMAIN-SUFFIX,tampermonkey.net
+DOMAIN-SUFFIX,googletagmanager.com
 # 国外DNS
 #DOMAIN-SUFFIX,dns.google
 #DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
