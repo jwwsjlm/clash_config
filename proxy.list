@@ -13,6 +13,7 @@ DOMAIN-SUFFIX,DOMAIN-SUFFIX,jads.co
 DOMAIN-SUFFIX,tampermonkey.net
 DOMAIN-SUFFIX,googletagmanager.com
 # 国外DNS
+DNS,1.1.1.1
 #DOMAIN-SUFFIX,dns.google
 #DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
 #DOMAIN-SUFFIX,dot.sb
